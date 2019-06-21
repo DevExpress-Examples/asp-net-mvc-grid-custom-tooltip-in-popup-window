@@ -7,6 +7,9 @@
 * **[Index.cshtml](./CS/GridViewTooltip/Views/Home/Index.cshtml)**
 <!-- default file list end -->
 # GridView - How to create a custom tooltip for cells to display long text 
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/t342270)**
+<!-- run online end -->
 
 
 <p>This example demonstrates how to create a custom tooltip for data cells using the <a href="https://documentation.devexpress.com/#AspNet/CustomDocument9006"> PopupControl</a>. The main idea is to assign a delegate method to the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebMvcGridViewSettings_HtmlDataCellPreparedtopic">GridViewSettings.HtmlDataCellPrepared</a>  property and handle the mouseover event to display a popup window.</p>
