@@ -8,7 +8,7 @@
 <!-- default file list end -->
 # GridView - How to create a custom tooltip for cells to display long text 
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t342270)**
+**[[Run Online]](https://codecentral.devexpress.com/t342270/)**
 <!-- run online end -->
 
 
