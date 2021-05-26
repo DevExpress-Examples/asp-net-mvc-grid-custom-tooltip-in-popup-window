@@ -12,7 +12,7 @@
 <!-- run online end -->
 
 
-<p>This example demonstrates how to create a custom tooltip for data cells using the <a href="https://documentation.devexpress.com/#AspNet/CustomDocument9006"> PopupControl</a>. The main idea is to assign a delegate method to the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebMvcGridViewSettings_HtmlDataCellPreparedtopic">GridViewSettings.HtmlDataCellPrepared</a>  property and handle the mouseover event to display a popup window.</p>
+<p>This example demonstrates how to create a custom tooltip for data cells using the <a href="https://documentation.devexpress.com/#AspNet/CustomDocument9006"> PopupControl</a>. The main idea is to assign a delegate method to the <a href="https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.GridViewSettings.HtmlDataCellPrepared">GridViewSettings.HtmlDataCellPrepared</a>  property and handle the mouseover event to display a popup window.</p>
 
 
 ```cs
@@ -45,7 +45,7 @@
 ```
 
 
-<p><br>The <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebMvcGridViewSettings_CustomJSPropertiestopic">GridViewSettings.CustomJSProperties</a>  property is used to pass data to the client side. </p>
+<p><br>The <a href="https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.GridViewSettings.CustomJSProperties">GridViewSettings.CustomJSProperties</a>  property is used to pass data to the client side. </p>
 
 
 ```cs
