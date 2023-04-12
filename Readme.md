@@ -1,93 +1,56 @@
-<!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/128549888/15.1.9%2B)
-[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T342270)
-[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
-<!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
-
-* [HomeController.cs](./CS/GridViewTooltip/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/GridViewTooltip/Controllers/HomeController.vb))
-* [SimpleModel.cs](./CS/GridViewTooltip/Models/SimpleModel.cs) (VB: [SimpleModel.vb](./VB/GridViewTooltip/Models/SimpleModel.vb))
-* [GridViewPartial.cshtml](./CS/GridViewTooltip/Views/Home/GridViewPartial.cshtml)
-* **[Index.cshtml](./CS/GridViewTooltip/Views/Home/Index.cshtml)**
-<!-- default file list end -->
-# GridView - How to create a custom tooltip for cells to display long text 
+# Grid View for ASP.NET MVC - How to create a custom tooltip to display a long text string
 <!-- run online -->
 **[[Run Online]](https://codecentral.devexpress.com/t342270/)**
 <!-- run online end -->
 
+This example demonstrates how to use a popup control to display a custom tooltip.
 
-<p>This example demonstrates how to create a custom tooltip for data cells using the <a href="https://documentation.devexpress.com/#AspNet/CustomDocument9006"> PopupControl</a>. The main idea is to assign a delegate method to the <a href="https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.GridViewSettings.HtmlDataCellPrepared">GridViewSettings.HtmlDataCellPrepared</a>  property and handle the mouseover event to display a popup window.</p>
+![Custom Tooltip](customTooltip.png)
 
+## Overview
 
-```cs
-   settings.HtmlDataCellPrepared = (s, e) => {
-        e.Cell.Attributes.Add("onmouseover", String.Format("OnMouseMove(this, event, '{0}');", e.KeyValue));
-   };
+The main idea is to assign a delegate method to the grid's [HtmlDataCellPrepared](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.GridViewSettings.HtmlDataCellPrepared) property and handle the `mouseover` event to display a pop-up window.
+
+```csharp
+settings.HtmlDataCellPrepared = (s, e) => {
+    e.Cell.Attributes.Add("onmouseover", String.Format("OnMouseMove(this, event, '{0}');", e.KeyValue));
+};
 ```
-
-
-
-
-```vb
-    settings.HtmlDataCellPrepared = Sub(s, e)
-         e.Cell.Attributes.Add("onmouseover", String.Format("OnMouseMove(this, event, '{0}');", e.KeyValue))
-    End Sub
-```
-
-
-
 
 ```js
-  var oldKey = null;
-  function OnMouseMove(element, event, key) {
-        if (typeof GridView.cpTooltipList[key] != "undefined" && oldKey != key) {
-            oldKey = key;
-            PopupControl.ShowAtPos(event.clientX, event.clientY);
-            ToolTipLabel.SetText("Item " + key + "<br/>" + GridView.cpTooltipList[key]);
-        }   
-   }
+var oldKey = null;
+function OnMouseMove(element, event, key) {
+    if (typeof GridView.cpTooltipList[key] != "undefined" && oldKey != key) {
+        oldKey = key;
+        PopupControl.ShowAtPos(event.clientX, event.clientY);
+        ToolTipLabel.SetText("Item " + key + "<br/>" + GridView.cpTooltipList[key]);
+    }   
+}
 ```
 
+Use the grid's [CustomJSProperties](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.GridViewSettings.CustomJSProperties) property to get information about row values and pass it to the client.
 
-<p><br>The <a href="https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.GridViewSettings.CustomJSProperties">GridViewSettings.CustomJSProperties</a>  property is used to pass data to the client side. </p>
-
-
-```cs
-  settings.CustomJSProperties = (s, e) => {
-        MVCxGridView grid = s as MVCxGridView;
-        int startIndex = grid.VisibleStartIndex;
-        int endIndex = grid.VisibleStartIndex + grid.SettingsPager.PageSize;
-        var clientData = new Dictionary<int, object>();
-        for (int i = startIndex; i <  endIndex; i++)
-        {
-            var rowValues = grid.GetRowValues(i, new string[] { "ID", "Description" }) as object[];
-            clientData.Add(Convert.ToInt32(rowValues[0]), rowValues[1]);
-         
-        }                
-        e.Properties.Add("cpTooltipList", clientData);
-   };
+```csharp
+settings.CustomJSProperties = (s, e) => {
+    MVCxGridView grid = s as MVCxGridView;
+    int startIndex = grid.VisibleStartIndex;
+    int endIndex = grid.VisibleStartIndex + grid.SettingsPager.PageSize;
+    var clientData = new Dictionary<int, object>();
+    for (int i = startIndex; i < endIndex; i++) {
+        var rowValues = grid.GetRowValues(i, new string[] { "ID", "Description" }) as object[];
+        clientData.Add(Convert.ToInt32(rowValues[0]), rowValues[1]);
+    }
+    e.Properties.Add("cpTooltipList", clientData);
+};
 ```
 
+## Files to Review
 
+* [HomeController.cs](./CS/GridViewTooltip/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/GridViewTooltip/Controllers/HomeController.vb))
+* [SimpleModel.cs](./CS/GridViewTooltip/Models/SimpleModel.cs) (VB: [SimpleModel.vb](./VB/GridViewTooltip/Models/SimpleModel.vb))
+* [GridViewPartial.cshtml](./CS/GridViewTooltip/Views/Home/GridViewPartial.cshtml)
+* [Index.cshtml](./CS/GridViewTooltip/Views/Home/Index.cshtml)
 
+## Documentation
 
-```vb
-   settings.CustomJSProperties = Sub(s, e)
-             Dim grid As MVCxGridView = TryCast(s, MVCxGridView)
-             Dim startIndex As Integer = grid.VisibleStartIndex
-             Dim endIndex As Integer = grid.VisibleStartIndex + grid.SettingsPager.PageSize
-             Dim clientData = New Dictionary(Of Integer, Object)()
-             For i As Integer = startIndex To endIndex - 1
-                  Dim rowValues = TryCast(grid.GetRowValues(i, New String() {"ID", "Description"}), Object())
-                  clientData.Add(Convert.ToInt32(rowValues(0)), rowValues(1))
-             Next i
-             e.Properties.Add("cpTooltipList", clientData)
-   End Sub
-```
-
-
-
-<br/>
-
-
+* [Passing Values Between Server and Client Sides](https://docs.devexpress.com/AspNetMvc/402316/common-features/client-side-functionality/passing-values-between-server-and-client-sides#how-to-access-server-data-on-the-client-side)
