@@ -5,7 +5,7 @@
 <!-- default badges end -->
 # Grid View for ASP.NET MVC - How to create a custom tooltip to display a long text string
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t342270/)**
+**[[Run Online]](https://codecentral.devexpress.com/128549888/)**
 <!-- run online end -->
 
 This example demonstrates how to use a popup control to display a custom tooltip.
