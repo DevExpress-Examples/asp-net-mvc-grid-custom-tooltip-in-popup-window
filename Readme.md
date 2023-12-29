@@ -4,9 +4,6 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 # Grid View for ASP.NET MVC - How to create a custom tooltip to display a long text string
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/128549888/)**
-<!-- run online end -->
 
 This example demonstrates how to use a popup control to display a custom tooltip.
 
