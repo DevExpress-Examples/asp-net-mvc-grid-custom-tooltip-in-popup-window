@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System.Web
+﻿Imports System.Web
 Imports System.Web.Mvc
 
 Namespace GridViewTooltip
