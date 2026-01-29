@@ -1,0 +1,27 @@
+@Html.DevExpress().GridView(settings => {
+    settings.Name = "GridView";
+    settings.KeyFieldName = "ID";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "GridViewPartial" };
+    settings.Columns.Add("ID"); 
+    settings.Columns.Add("Name");
+    settings.SettingsPager.EnableAdaptivity = true;
+    settings.CustomJSProperties = (s, e) => {
+        MVCxGridView grid = s as MVCxGridView;
+        int startIndex = grid.VisibleStartIndex;
+        int endIndex = grid.VisibleStartIndex + grid.SettingsPager.PageSize;
+        var clientData = new Dictionary<int, object>();
+        for (int i = startIndex; i <  endIndex; i++)
+        {
+            var rowValues = grid.GetRowValues(i, new string[] { "ID", "Description" }) as object[];
+            clientData.Add(Convert.ToInt32(rowValues[0]), rowValues[1]);
+         
+        }                
+        e.Properties.Add("cpTooltipList", clientData);
+    };
+    settings.HtmlDataCellPrepared = (s, e) =>
+    {
+
+        e.Cell.Attributes.Add("onmouseover", String.Format("OnMouseMove(this, event, '{0}');", e.KeyValue));
+    };
+
+}).Bind(Model).GetHtml()

@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports GridViewTooltip.Models
+﻿Imports GridViewTooltip.Models
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq
@@ -9,6 +8,7 @@ Imports System.Web.Mvc
 Namespace GridViewTooltip.Controllers
 	Public Class HomeController
 		Inherits Controller
+
 		'
 		' GET: /Home/
 

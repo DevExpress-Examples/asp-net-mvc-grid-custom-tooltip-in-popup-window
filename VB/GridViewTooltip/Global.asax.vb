@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Web
@@ -13,6 +12,7 @@ Namespace GridViewTooltip
 
 	Public Class MvcApplication
 		Inherits System.Web.HttpApplication
+
 		Protected Sub Application_Start()
 			AreaRegistration.RegisterAllAreas()
 
