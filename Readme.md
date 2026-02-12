@@ -58,7 +58,7 @@ settings.CustomJSProperties = (s, e) => {
 
 * [Passing Values Between Server and Client Sides](https://docs.devexpress.com/AspNetMvc/402316/common-features/client-side-functionality/passing-values-between-server-and-client-sides#how-to-access-server-data-on-the-client-side)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-mvc-grid-custom-tooltip-in-popup-window&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-mvc-grid-custom-tooltip-in-popup-window&~~~was_helpful=no)
 
